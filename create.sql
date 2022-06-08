@@ -1,0 +1,6 @@
+--CREATE DATABASE technology;
+--\c technology;
+--CREATE TABLE employees (id SERIAL PRIMARY KEY, first_name VARCHAR, last_name VARCHAR,  staff_id VARCHAR, role_id INTEGER, department_id INTEGER);
+--CREATE TABLE departments (id SERIAL PRIMARY KEY, name VARCHAR);
+--CREATE TABLE roles (id SERIAL PRIMARY KEY, name VARCHAR);
+--CREATE DATABASE technology_test WITH TEMPLATE technology;

@@ -1,0 +1,20 @@
+.card-img{
+    height: 200px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    line-height: 60px;
+  }
+
+.nav-footer {
+    display: flex;
+    list-style: none;
+  }
+
+.form-template {
+    border: 1px solid grey;
+    padding: 20px;
+}
