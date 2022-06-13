@@ -1,0 +1,96 @@
+{{#partial "content"}}
+    {{#if editEmployee}}
+        <div class="form-div">
+            <h1 class="form-title">Edit this Task!</h1>
+            <form action="/employees/{{employee.id}}" method="post" class="form">
+
+                <div class="mb-3 input-div">
+                    <label for="first_name" class="form-label">Edit First name</label>
+                    <input class="form-control border-bottom input-field" id="first_name" name="first_name" type="text" value="{{employee.first_name}}" required>
+                </div>
+                <div class="mb-3 input-div">
+                    <label for="last_name" class="form-label">Edit Last name</label>
+                    <input class="form-control border-bottom input-field" id="last_name" name="last_name" type="text"  value="{{employee.last_name}}" required>
+                </div>
+                <div class="mb-3 input-div">
+                    <label for="staff_id" class="form-label">Edit Staff ID</label>
+                    <input class="form-control border-bottom input-field" id="staff_id" name="staff_id" type="text" value="{{employee.staff_id}}" required>
+                </div>
+                <div class="mb-3 input-div">
+                    <label for="role" class="form-label">Edit Job Role</label>
+                    <input class="form-control border-bottom input-field" id="role" name="role" type="text" value="{{employee.role}}" required>
+                </div>
+                <div class="mb-3 input-div">
+                    <label for="position_id" class="form-label">Position</label>
+                    <select id="position_id" name="position_id" class="form-select">
+                        {{#each positions}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="mb-3 input-div">
+                    <label for="department_id" class="form-label">Change Department</label>
+                    <select id="department_id" name="department_id" class="form-select">
+                        {{#each departments}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <p class="text-center">Don't see the right <span style="font-weight: bold">Department?</span><a href="/departments/new"> + New Department</a><br>
+                    Or <br>the right <span style="font-weight: bold">Position?</span><a href="/positions/new"> + New Position</a></p>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    {{else}}
+        <div class="form-div">
+        <h3 class="text-center form-title">Add Employee</h3>
+            <form action="/employees" method="post" class="form">
+                {{#if departments}}
+                    {{#if positions}}
+                    <div class="mb-3 input-div">
+                        <label for="first_name" class="form-label">First name</label>
+                        <input class="form-control border-bottom input-field" id="first_name" name="first_name" type="text" placeholder="Enter first name" required>
+                    </div>
+                    <div class="mb-3 input-div">
+                        <label for="last_name" class="form-label">Last name</label>
+                        <input class="form-control border-bottom input-field" id="last_name" name="last_name" type="text" placeholder="Enter last name" required>
+                    </div>
+                    <div class="mb-3 input-div">
+                        <label for="staff_id" class="form-label">Staff ID</label>
+                        <input class="form-control border-bottom input-field" id="staff_id" name="staff_id" type="text" placeholder="Enter staff ID" required>
+                    </div>
+                    <div class="mb-3 input-div">
+                        <label for="role" class="form-label">Job Role</label>
+                        <input class="form-control border-bottom input-field" id="role" name="role" type="text" placeholder="Enter role e.g. Network Analyst" required>
+                    </div>
+                    <div class="mb-3 input-div">
+                        <label for="position_id" class="form-label">Position</label>
+                        <select id="position_id" name="position_id" class="form-select">
+                            {{#each positions}}
+                                <option value="{{id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="mb-3 input-div">
+                    <label for="department_id" class="form-label">Department</label>
+                    <select id="department_id" name="department_id" class="form-select">
+                        {{#each departments}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                    </div>
+                    <p class="text-center">Don't see the right <span style="font-weight: bold">Department?</span><a href="/departments/new"> + New Department</a><br>
+                        Or <br>the right <span style="font-weight: bold">Position?</span><a href="/positions/new"> + New Position</a></p>
+                {{else}}
+                    <p class="text-center"> Add a Position before you adding an Employee <a href="/positions/new">+ New Position</a> </p>
+                    {{/if}}
+                {{else}}
+                    <p class="text-center"> Add a Department before you adding an Employee <a href="/departments/new">+ New Department</a> </p>
+                {{/if}}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}

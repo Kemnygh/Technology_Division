@@ -2,23 +2,26 @@ package dao;
 
 import models.Department;
 import models.Employee;
+import models.Position;
 
 import java.util.List;
 
-public interface DepartmentDao {
+public interface PositionDao {
     // LIST
-    List<Department> getAll();
+    List<Position> getAll();
 
     // CREATE
-    void add(Department department);
+    void add(Position position);
 
     // READ
-    Department findById(int id);
+    Position findById(int id);
 
     // UPDATE
     void update(int id, String name);
 
     // DELETE
     void deleteById(int id);
-    void clearAllTasks();
+    void clearAllPositions();
+
+    List<Employee> getAllEmployeesByPosition(int positionId);
 }

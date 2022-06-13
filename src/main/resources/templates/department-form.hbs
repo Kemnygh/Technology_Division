@@ -1,0 +1,27 @@
+{{#partial "content"}}
+    {{#if editDepartment}}
+        <div class="form-div">
+            <h1>Edit this Department!</h1>
+            <form action="/departments/{{department.id}}" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Edit this position's name</label>
+                    <input class="form-control input-field" id="newDepartment" name="newDepartment" type="text" value="{{department.name}}">
+                </div>
+                <button type="submit" class="btn btn-success bt-sm">Submit</button>
+            </form>
+        </div>
+    {{else}}
+        <div class="form-div">
+            <h3 class="text-center form-title">Add new Department</h3>
+            <form action="/departments" method="post" class="form">
+                <div class="mb-3 input-div">
+                    <label for="name" class="form-label">Department name</label>
+                    <input class="form-control border-bottom input-field" id="name" name="name" type="text" placeholder="Enter Department" required>
+                </div>
+                <button type="submit" class="btn btn-success bt-sm">Submit</button>
+            </form>
+        </div>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}

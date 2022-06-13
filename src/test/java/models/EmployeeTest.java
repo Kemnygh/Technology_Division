@@ -40,6 +40,6 @@ class EmployeeTest {
     }
 
     public Employee setupNewEmployee(){
-        return new Employee("John", "Doe", "EN001", 1, 1);
+        return new Employee("John", "Doe", "EN001", "Manager DevOps",1, 1);
     }
 }

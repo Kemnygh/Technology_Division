@@ -1,0 +1,29 @@
+{{#partial "content"}}
+    <h3 class="index-title">{{position.name}}s</h3>
+    <p>Employee details:</p>
+    <table class="table table-hover table-responsive table-sm">
+        <thead class="table-info">
+        <tr>
+            <th scope="col">Staff ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Role</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {{#each employees}}
+            <tr>
+                <th scope="row"><a href="/employees/{{id}}/{{position_id}}/{{department_id}}">{{staff_id}}</a></th>
+                <td>{{first_name}}</td>
+                <td>{{last_name}}</td>
+                <td>{{role}}</td>
+            </tr>
+        {{/each}}
+        <tr>
+            <th scope="row" colspan="4"><a href="/positions/{{position.id}}/edit">Edit Position</a>  |  <a href="/positions/{{position.id}}/delete">DELETE Position</a></th>
+        </tr>
+        </tbody>
+    </table>
+{{/partial}}
+
+{{> layout.hbs}}

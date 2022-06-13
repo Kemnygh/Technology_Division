@@ -7,8 +7,11 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>{{#block "title"}}Welcome to the Technology Division{{/block}}</title>
+        <title>{{#block "title"}}Technology Division{{/block}}</title>
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Festive&family=Poppins:wght@700&family=Roboto:wght@100&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -16,65 +19,103 @@
     <body>
 {{/block}}
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg" style="background-color: #424242;">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#"><img src="/images/logo.png" alt="" width="50" height="45"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link text-white active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/posts">See All Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/posts/new">Add New Post</a>
-                    </li>
-                </ul>
-<!--                <form class="d-flex" role="search">-->
-<!--                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--                </form>-->
-            </div>
-        </div>
-    </nav>
-    <!--begin main template-->
-    <div id="carouselExampleCaptions" class="carousel slide mb-3" data-bs-ride="false">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/images/background.jpg" class="d-block w-100 card-img" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Welcome to Bloggi</h3>
-                    <p>A thousand mile journey into software engineering</p>
+        <div class="container main-block">
+            <nav class="navbar navbar-expand-lg" style="background-color: #424242;">
+                <div class="container-fluid">
+                    <a class="navbar-brand text-white" href="/"><img src="/images/word logo.svg" alt="" width="100" height="50"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-white active" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Positions
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {{#if positions}}
+                                        {{#each positions}}
+                                            <li><a class="dropdown-item" href="/positions/{{id}}">{{name}}</a></li>
+                                        {{/each}}
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="/positions/new">+ New Position</a></li>
+                                    {{else}}
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="/positions/new">+ New position</a></li>
+                                    {{/if}}
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Departments
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {{#if departments}}
+                                        {{#each departments}}
+                                        <li><a class="dropdown-item" href="/departments/{{id}}">{{name}}</a></li>
+                                        {{/each}}
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="/departments/new">+ New Department</a></li>
+                                    {{else}}
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="/departments/new">+ New Department</a></li>
+                                    {{/if}}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!--begin main template-->
+            <div id="carouselExampleCaptions" class="carousel slide mb-3" data-bs-ride="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/images/techbg3.jpg" class="d-block w-100 card-img" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Welcome to Technology Division</h3>
+                            <p>Where machine and man interact in a fantastic way</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div class="">
-        {{#block "content"}}
-        {{/block}}
+            <div class="add-buttons">
+                <div>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-success" onclick="window.location.href='/employees/new';">+ New Employee <i class="bi bi-people-fill"></i></button>
+                        <button type="button" class="btn btn-success" onclick="window.location.href='/positions/new';">+ New Position <i class="bi bi-file-person"></i></button>
+                        <button type="button" class="btn btn-success" onclick="window.location.href='/departments/new';">+ New Department <i class="bi bi-collection-fill"></i></button>
+                    </div>
+                    <hr>
+                    <p>Current Departments</p>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        {{# each departments}}
+                        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/departments/{{id}}';">{{name}}</button>
+                        {{/each}}
+                    </div>
+                    <hr>
+                </div>
+                {{#block "content"}}
+                {{/block}}
 
-    </div>
-</div>
+            </div>
+
 
 {{#block "footer"}}
-    <div class="container">
-        <footer class="footer">
-            <div class="container">
-                {{#block "footer content"}}
-                {{/block}}
-                <hr>
-                <nav class="nav-footer">
-                    <li id="copyRight">@Copyright 2022 www.bloggi.com</li>
-                </nav>
-            </div>
-        </footer>
-    </div>
+            <footer class="footer">
+                <div class="container">
+                    {{#block "footer content"}}
+                    {{/block}}
+                    <hr>
+                    <nav class="nav-footer">
+                        <li id="copyRight">@Copyright 2022 Technology Division</li>
+                    </nav>
+                </div>
+            </footer>
+        </div>
     </body>
     </html>
 {{/block}}
