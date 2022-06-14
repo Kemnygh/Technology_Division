@@ -17,7 +17,7 @@ public class Sql2oPositionDao implements PositionDao {
 
     @Override
     public void add(Position position) {
-        String sql = "INSERT INTO positions (name) VALUES (:name)"; //raw sql
+        String sql = "INSERT INTO positions (name, created_at) VALUES (:name, :created_at)"; //raw sql
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql, true) //make a new variable
                     .bind(position) //map my argument onto the query so we can use information from it
@@ -47,11 +47,12 @@ public class Sql2oPositionDao implements PositionDao {
     }
 
     @Override
-    public void update(int id, String newPosition){
-        String sql = "UPDATE positions SET name = :name WHERE id=:id";
+    public void update(int id, String newPosition, String updated){
+        String sql = "UPDATE positions SET (name, updated) = (:name, :updated) WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("name", newPosition)
+                    .addParameter("updated", updated)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {

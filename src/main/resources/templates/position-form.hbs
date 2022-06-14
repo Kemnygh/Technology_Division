@@ -7,40 +7,36 @@
                     <label for="name" class="form-label">Edit this position's name</label>
                     <input class="form-control input-field" id="newPosition" name="newPosition" type="text" value="{{position.name}}">
                 </div>
-<!--                <div class="mb-3 input-div">-->
-<!--                    <label for="department_id" class="form-label">Change Department</label>-->
-<!--                    <select id="department_id" name="department_id" class="form-select">-->
-<!--                        {{#each departments}}-->
-<!--                            <option value="{{id}}">{{name}}</option>-->
-<!--                        {{/each}}-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--                <p class="text-center">Don't see the right <span style="font-weight: bold">Department?</span><a href="/departments/new"> + New Department</a>-->
-                <button type="submit" class="btn btn-success bt-sm">Submit</button>
+                <div class="mb-3 input-div">
+                    <input class="form-control border-bottom input-field" id="updated" name="updated" type="hidden" value="{{position.updated}}" required>
+                </div>
+                <script>
+                    function time() {
+                    let dt = new Date().toLocaleString()
+                    document.getElementById('updated').value = dt
+                    }
+                </script>
+                <button type="submit" class="btn btn-success bt-sm" onclick="time()">Submit</button>
             </form>
         </div>
     {{else}}
         <div class="form-div">
             <h3 class="text-center form-title">Add new Position</h3>
             <form action="/positions" method="post" class="form">
-<!--                {{#if departments}}-->
-                    <div class="mb-3 input-div">
-                        <label for="name" class="form-label">Position name</label>
-                        <input class="form-control border-bottom input-field" id="name" name="name" type="text" placeholder="Enter Position" required>
-                    </div>
-<!--                    <div class="mb-3 input-div">-->
-<!--                        <label for="department_id" class="form-label">Department</label>-->
-<!--                        <select id="department_id" name="department_id" class="form-select">-->
-<!--                            {{#each departments}}-->
-<!--                                <option value="{{id}}">{{name}}</option>-->
-<!--                            {{/each}}-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                    <p class="text-center mb-3">Don't see the right <span style="font-weight: bold">Department?</span><a href="/departments/new"> + New Department</a>-->
-<!--                {{else}}-->
-<!--                    <p class="text-center"> Add a Department before adding a Position <a href="/departments/new">+ New Department</a> </p>-->
-<!--                {{/if}}-->
-                <button type="submit" class="btn btn-success btn-sm">Submit</button>
+                <div class="mb-3 input-div">
+                    <label for="name" class="form-label">Position name</label>
+                    <input class="form-control border-bottom input-field" id="name" name="name" type="text" placeholder="Enter Position" required>
+                </div>
+               <div class="mb-3 input-div">
+                    <input class="form-control border-bottom input-field" id="created_at" name="created_at" type="hidden"  required>
+                </div>
+                <script>
+                    function created() {
+                    let dt = new Date().toLocaleString()
+                    document.getElementById('created_at').value = dt
+                    }
+                </script>
+                <button type="submit" class="btn btn-success btn-sm" onclick="created()">Submit</button>
             </form>
         </div>
     {{/if}}

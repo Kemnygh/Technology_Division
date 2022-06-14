@@ -6,11 +6,12 @@ import java.util.Objects;
 public class Department {
     private String name;
     private int id;
-    private Date createdAt;
+    private String created_at;
+    private String updated;
 
-    public Department(String name){
+    public Department(String name, String created_at){
         this.name = name;
-        this.createdAt = new Date();
+        this.created_at = created_at;
     }
 
     @Override
@@ -18,12 +19,12 @@ public class Department {
         if (this == o) return true;
         if (!(o instanceof Department)) return false;
         Department that = (Department) o;
-        return id == that.id && name.equals(that.name) && createdAt.equals(that.createdAt);
+        return getId() == that.getId() && getName().equals(that.getName()) && getCreated_at().equals(that.getCreated_at()) && getUpdated().equals(that.getUpdated());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, id, createdAt);
+        return Objects.hash(getName(), getId(), getCreated_at(), getUpdated());
     }
 
     public int getId() {
@@ -34,15 +35,15 @@ public class Department {
         this.id = id;
     }
 
-//    public void setCreatedAt(Date createdAt) {
-//        this.createdAt = createdAt;
-//    }
+    public String getUpdated() {
+        return updated;
+    }
 
     public String getName() {
         return name;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getCreated_at() {
+        return created_at;
     }
 }

@@ -142,7 +142,8 @@ public class App {
         post("/departments", (req, res) -> { //new
             Map<String, Object> model = new HashMap<>();
             String name = req.queryParams("name");
-            Department newDepartment = new Department(name);
+            String createdAt = req.queryParams("created_at");
+            Department newDepartment = new Department(name, createdAt);
             departmentDao.add(newDepartment);
             res.redirect("/");
             return null;
@@ -177,7 +178,8 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             int idOfDepartmentToEdit = Integer.parseInt(req.params("id"));
             String newName = req.queryParams("newDepartment");
-            departmentDao.update(idOfDepartmentToEdit, newName);
+            String updateTime = req.queryParams("updated");
+            departmentDao.update(idOfDepartmentToEdit, newName, updateTime);
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
@@ -206,7 +208,8 @@ public class App {
         post("/positions", (req, res) -> { //new
             Map<String, Object> model = new HashMap<>();
             String name = req.queryParams("name");
-            Position newPosition = new Position(name);
+            String createdAt = req.queryParams("created_at");
+            Position newPosition = new Position(name, createdAt);
             positionDao.add(newPosition);
             res.redirect("/");
             return null;
@@ -241,8 +244,8 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             int idOfPositionToEdit = Integer.parseInt(req.params("id"));
             String newName = req.queryParams("newPosition");
-            int newDepartmentId = Integer.parseInt(req.queryParams("department_id"));
-            positionDao.update(idOfPositionToEdit, newName);
+            String updateTime = req.queryParams("updated");
+            positionDao.update(idOfPositionToEdit, newName, updateTime);
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());

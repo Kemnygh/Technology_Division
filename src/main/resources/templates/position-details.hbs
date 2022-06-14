@@ -8,6 +8,8 @@
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Role</th>
+            <th scope="col">Date Created</th>
+            <th scope="col">Last Updated</th>
         </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -17,10 +19,12 @@
                 <td>{{first_name}}</td>
                 <td>{{last_name}}</td>
                 <td>{{role}}</td>
+                <td>{{created_at}}</td>
+                <td>{{updated}}</td>
             </tr>
         {{/each}}
         <tr>
-            <th scope="row" colspan="4"><a href="/positions/{{position.id}}/edit">Edit Position</a>  |  <a href="/positions/{{position.id}}/delete">DELETE Position</a></th>
+            <th scope="row" colspan="6"><a href="/positions/{{position.id}}/edit">Edit Position</a>  |  <a href="/positions/{{position.id}}/delete">DELETE Position</a></th>
         </tr>
         </tbody>
     </table>

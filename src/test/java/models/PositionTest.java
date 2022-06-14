@@ -20,15 +20,10 @@ class PositionTest {
         assertEquals("HOD", position.getName());
     }
 
-    @Test
-    void getCreatedAtInstantiatesWithCurrentDate() {
-        Position position = setupNewPosition();
-        Date todayTime = new Date();
-        assertEquals(position.getCreatedAt(), todayTime);
-    }
+
 
     public Position setupNewPosition(){
-        return new Position("HOD");
+        return new Position("HOD", "2022-06-14");
     }
 
 }

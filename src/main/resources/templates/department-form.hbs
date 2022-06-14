@@ -7,7 +7,16 @@
                     <label for="name" class="form-label">Edit this position's name</label>
                     <input class="form-control input-field" id="newDepartment" name="newDepartment" type="text" value="{{department.name}}">
                 </div>
-                <button type="submit" class="btn btn-success bt-sm">Submit</button>
+                <div class="mb-3 input-div">
+                    <input class="form-control border-bottom input-field" id="updated" name="updated" type="hidden" value="{{department.updated}}" required>
+                </div>
+                <script>
+                    function time() {
+                    let dt = new Date().toLocaleString()
+                    document.getElementById('updated').value = dt
+                    }
+                </script>
+                <button type="submit" class="btn btn-success bt-sm" onclick="time()">Submit</button>
             </form>
         </div>
     {{else}}
@@ -18,7 +27,16 @@
                     <label for="name" class="form-label">Department name</label>
                     <input class="form-control border-bottom input-field" id="name" name="name" type="text" placeholder="Enter Department" required>
                 </div>
-                <button type="submit" class="btn btn-success bt-sm">Submit</button>
+                <div class="mb-3 input-div">
+                    <input class="form-control border-bottom input-field" id="created_at" name="created_at" type="hidden"  required>
+                </div>
+                <script>
+                    function created() {
+                    let dt = new Date().toLocaleString()
+                    document.getElementById('created_at').value = dt
+                    }
+                </script>
+                <button type="submit" class="btn btn-success bt-sm" onclick="created()">Submit</button>
             </form>
         </div>
     {{/if}}

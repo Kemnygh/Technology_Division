@@ -77,9 +77,9 @@ class Sql2oDepartmentDaoTest {
     @Test
     public void updateChangesDepartmentContent() throws Exception {
         String initialDescription = "Information Technology";
-        Department department = new Department (initialDescription);
+        Department department = new Department (initialDescription, "2022-06-14");
         departmentDao.add(department);
-        departmentDao.update(department.getId(), "Network Planning");
+        departmentDao.update(department.getId(), "Network Planning", "2022-06-14");
         Department updatedDepartment = departmentDao.findById(department.getId());
         assertNotEquals(initialDescription, updatedDepartment.getName());
     }
@@ -95,7 +95,7 @@ class Sql2oDepartmentDaoTest {
     @Test
     public void clearAllClearsAllDepartments() throws Exception {
         Department department = setupNewDepartment();
-        Department otherDepartment = new Department("Network Planning");
+        Department otherDepartment = new Department("Network Planning", "2022-06-14");
         departmentDao.add(department);
         departmentDao.add(otherDepartment);
         int daoSize = departmentDao.getAll().size();
@@ -136,7 +136,7 @@ class Sql2oDepartmentDaoTest {
 
     // helper method
     public Department setupNewDepartment(){
-        return new Department("Information Technology");
+        return new Department("Information Technology", "2022-06-14");
     }
 
 }

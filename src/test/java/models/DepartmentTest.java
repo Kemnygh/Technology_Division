@@ -20,14 +20,9 @@ class DepartmentTest {
         assertEquals("Information Technology", department.getName());
     }
 
-    @Test
-    void getCreatedAtInstantiatesWithCurrentDate() {
-        Department department = setupNewDepartment();
-        Date todayTime = new Date();
-        assertEquals(department.getCreatedAt(), todayTime);
-    }
+
 
     public Department setupNewDepartment(){
-        return new Department("Information Technology");
+        return new Department("Information Technology", "2022-06-14");
     }
 }

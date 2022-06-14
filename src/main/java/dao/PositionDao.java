@@ -17,7 +17,7 @@ public interface PositionDao {
     Position findById(int id);
 
     // UPDATE
-    void update(int id, String name);
+    void update(int id, String name, String Updated);
 
     // DELETE
     void deleteById(int id);

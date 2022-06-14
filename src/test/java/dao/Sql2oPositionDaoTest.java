@@ -75,9 +75,9 @@ class Sql2oPositionDaoTest {
     @Test
     public void updateChangesPositionContent() throws Exception {
         String initialDescription = "Senior Manager";
-        Position position = new Position (initialDescription);
+        Position position = new Position (initialDescription, "2022-06-14");
         positionDao.add(position);
-        positionDao.update(position.getId(), "Senior Management");
+        positionDao.update(position.getId(), "Senior Management", "2022-06-14");
         Position updatedPosition = positionDao.findById(position.getId());
         assertNotEquals(initialDescription, updatedPosition.getName());
     }
@@ -93,7 +93,7 @@ class Sql2oPositionDaoTest {
     @Test
     public void clearAllClearsAllPositions() throws Exception {
         Position position = setupNewPosition();
-        Position otherPosition = new Position("Manager");
+        Position otherPosition = new Position("Manager", "2022-06-14");
         positionDao.add(position);
         positionDao.add(otherPosition);
         int daoSize = positionDao.getAll().size();
@@ -118,7 +118,7 @@ class Sql2oPositionDaoTest {
 
     // helper method
     public Position setupNewPosition(){
-        return new Position("Senior Manager");
+        return new Position("Senior Manager", "2022-06-14");
     }
 
 }

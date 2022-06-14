@@ -18,7 +18,7 @@ public class Sql2oDepartmentDao implements DepartmentDao {
 
     @Override
     public void add(Department department) {
-        String sql = "INSERT INTO departments (name) VALUES (:name)"; //raw sql
+        String sql = "INSERT INTO departments (name, created_at) VALUES (:name, :created_at)"; //raw sql
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql, true) //make a new variable
                     .bind(department) //map my argument onto the query so we can use information from it
@@ -48,11 +48,12 @@ public class Sql2oDepartmentDao implements DepartmentDao {
     }
 
     @Override
-    public void update(int id, String newDepartment){
-        String sql = "UPDATE departments SET name = :name WHERE id=:id";
+    public void update(int id, String newDepartment, String updated){
+        String sql = "UPDATE departments SET (name, updated) = (:name, :updated) WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("name", newDepartment)
+                    .addParameter("updated", updated)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
