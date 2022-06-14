@@ -124,7 +124,8 @@ public class App {
             String role = req.queryParams("role");
             int positionId = Integer.parseInt(req.queryParams("position_id"));
             int departmentId = Integer.parseInt(req.queryParams("department_id"));
-            employeeDao.update(employeeToEditId, firstName, lastName, staffId, role, positionId, departmentId );
+            String updated = req.queryParams("updated");
+            employeeDao.update(employeeToEditId, firstName, lastName, staffId, role, positionId, departmentId, updated );
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());

@@ -68,7 +68,7 @@ class Sql2oEmployeeDaoTest {
     public void updateChangesEmployeeContent() throws Exception {
         Employee employee = setupNewEmployee();
         employeeDao.add(employee);
-        employeeDao.update(employee.getId(), "John", "Doe", "EN002", "Manager Networks", 2, 2);
+        employeeDao.update(employee.getId(), "John", "Doe", "EN002", "Manager Networks", 2, 2, "2022-06-04");
         Employee updatedEmployee = employeeDao.findById(employee.getId());
         assertNotEquals(employee, updatedEmployee);
     }

@@ -58,8 +58,8 @@ public class Sql2oEmployeeDao implements EmployeeDao {
     }
 
    @Override
-    public void update(int id, String newFirst_name, String newLast_name, String newStaff_id, String newRole, int position_id, int department_id) {
-        String sql = "UPDATE employees SET (first_name, last_name, staff_id, role, position_id, department_id) = (:first_name, :last_name, :staff_id, :role, :position_id, :department_id) WHERE id=:id";
+    public void update(int id, String newFirst_name, String newLast_name, String newStaff_id, String newRole, int position_id, int department_id, String updated) {
+        String sql = "UPDATE employees SET (first_name, last_name, staff_id, role, position_id, department_id, updated) = (:first_name, :last_name, :staff_id, :role, :position_id, :department_id, :updated) WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("first_name", newFirst_name)
@@ -69,6 +69,7 @@ public class Sql2oEmployeeDao implements EmployeeDao {
                     .addParameter("id", id)
                     .addParameter("position_id", position_id)
                     .addParameter("department_id", department_id)
+                    .addParameter("updated", updated)
                     .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);

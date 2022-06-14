@@ -16,7 +16,7 @@ public interface EmployeeDao {
     Employee findById(int id);
 
     // UPDATE
-    void update(int id,String first_name, String last_name, String staff_id, String role, int position_id, int department_id);
+    void update(int id,String first_name, String last_name, String staff_id, String role, int position_id, int department_id, String updated);
 
     // DELETE
     void deleteById(int id);

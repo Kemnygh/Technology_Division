@@ -21,6 +21,16 @@
                     <input class="form-control border-bottom input-field" id="role" name="role" type="text" value="{{employee.role}}" required>
                 </div>
                 <div class="mb-3 input-div">
+                    <input class="form-control border-bottom input-field" id="updated" name="updated" type="hidden" value="{{employee.updated}}" required>
+                </div>
+                <script>
+                function time() {
+                let dt = new Date().toLocaleString()
+                document.getElementById('updated').value = dt
+                }
+                </script>
+
+                <div class="mb-3 input-div">
                     <label for="position_id" class="form-label">Position</label>
                     <select id="position_id" name="position_id" class="form-select">
                         {{#each positions}}
@@ -38,7 +48,7 @@
                 </div>
                 <p class="text-center">Don't see the right <span style="font-weight: bold">Department?</span><a href="/departments/new"> + New Department</a><br>
                     Or <br>the right <span style="font-weight: bold">Position?</span><a href="/positions/new"> + New Position</a></p>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success" onclick="time()">Submit</button>
             </form>
         </div>
     {{else}}
