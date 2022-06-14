@@ -11,7 +11,7 @@ public class Employee {
     private int id;
     private int department_id;
     private int position_id;
-    private Date createdAt;
+    private Date created_at;
 
     public Employee(String first_name, String last_name, String staff_id, String role, int position_id, int department_id){
         this.first_name = first_name;
@@ -20,7 +20,6 @@ public class Employee {
         this.role = role;
         this.position_id = position_id;
         this.department_id = department_id;
-        this.createdAt = new Date();
     }
 
     @Override
@@ -28,31 +27,19 @@ public class Employee {
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
         Employee employee = (Employee) o;
-        return getId() == employee.getId() && getDepartment_id() == employee.getDepartment_id() && getRole().equals(employee.getRole()) &&  getPosition_id() == employee.getPosition_id() && getFirst_name().equals(employee.getFirst_name()) && getLast_name().equals(employee.getLast_name()) && getStaff_id().equals(employee.getStaff_id()) && getCreatedAt().equals(employee.getCreatedAt());
+        return getId() == employee.getId() && getDepartment_id() == employee.getDepartment_id() && getPosition_id() == employee.getPosition_id() && getFirst_name().equals(employee.getFirst_name()) && getLast_name().equals(employee.getLast_name()) && getStaff_id().equals(employee.getStaff_id()) && getRole().equals(employee.getRole()) && getCreated_at().equals(employee.getCreated_at());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirst_name(), getLast_name(), getStaff_id(), getRole(), getId(), getDepartment_id(), getPosition_id(), getCreatedAt());
+        return Objects.hash(getFirst_name(), getLast_name(), getStaff_id(), getRole(), getId(), getDepartment_id(), getPosition_id(), getCreated_at());
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    //    public void setRole_id(int role_id) {
-//        this.position_id = role_id;
-//    }
-//
-//    public void setDepartment_id(int department_id) {
-//        this.department_id = department_id;
-//    }
-
-    public int getId() {
+   public int getId() {
         return id;
     }
 
@@ -80,9 +67,7 @@ public class Employee {
         return staff_id;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getCreated_at() {
+        return created_at;
     }
-
-
 }

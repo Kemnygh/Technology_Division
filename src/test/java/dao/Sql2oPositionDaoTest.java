@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class Sql2oPositionDaoTest {
@@ -102,6 +104,7 @@ class Sql2oPositionDaoTest {
     @Test
     public void getAllEmployeesByPositionsReturnsEmployeesCorrectly() throws Exception {
         Position position = setupNewPosition();
+        Date todayTime = new Date();
         positionDao.add(position);
         int positionId = position.getId();
         Employee newEmployee = new Employee("John", "Doe", "EN001", "Analyst Networks",  positionId, 1);

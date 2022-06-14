@@ -1,6 +1,6 @@
 --CREATE DATABASE technology;
 --\c technology;
---CREATE TABLE employees (id SERIAL PRIMARY KEY, first_name VARCHAR, last_name VARCHAR,  staff_id VARCHAR, role VARCHAR, position_id INTEGER, department_id INTEGER);
+--CREATE TABLE employees (id SERIAL PRIMARY KEY, first_name VARCHAR, last_name VARCHAR, staff_id VARCHAR, role VARCHAR, position_id INTEGER, department_id INTEGER, createAt DATE);
 --CREATE TABLE departments (id SERIAL PRIMARY KEY, name VARCHAR);
---CREATE TABLE positions (id SERIAL PRIMARY KEY, department_id INTEGER, name VARCHAR);
+--CREATE TABLE positions (id SERIAL PRIMARY KEY, name VARCHAR);
 --CREATE DATABASE technology_test WITH TEMPLATE technology;

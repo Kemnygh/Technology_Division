@@ -7,6 +7,8 @@ import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 import spark.Response;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -20,12 +22,17 @@ public class Sql2oEmployeeDao implements EmployeeDao {
     @Override
     public void add(Employee employee) {
         String sql = "INSERT INTO employees (first_name, last_name, staff_id, role, position_id, department_id) VALUES (:first_name, :last_name, :staff_id, :role, :position_id, :department_id)"; //raw sql
+//        Date todayTime = new Date();
+//        String pattern = "MM/dd/yyyy HH:mm:ss";
+//        DateFormat df = new SimpleDateFormat(pattern);
+//        String todayAsString = df.format(todayTime);
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql, true) //make a new variable
                     .bind(employee) //map my argument onto the query so we can use information from it
                     .executeUpdate() //run it all
                     .getKey(); //int id is now the row number (row key) //of db
             employee.setId(id); //update object to set id now from database
+//            employee.setCreated_at(todayAsString);
         } catch (Sql2oException ex) {
             System.out.println(ex); //oops we have an error!
 

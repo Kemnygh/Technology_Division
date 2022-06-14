@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class Sql2oDepartmentDaoTest {
@@ -104,6 +106,7 @@ class Sql2oDepartmentDaoTest {
     @Test
     public void getAllEmployeesByDepartmentReturnsEmployeesCorrectly() throws Exception {
         Department department = setupNewDepartment();
+        Date todayTime = new Date();
         departmentDao.add(department);
         int departmentId = department.getId();
         Employee newEmployee = new Employee("John", "Doe", "EN001", "Analyst Networks", 1, departmentId);
@@ -118,6 +121,7 @@ class Sql2oDepartmentDaoTest {
     @Test
     public void deleteAllEmployeesByDepartmentDeletesCorrectly() throws Exception {
         Department department = setupNewDepartment();
+        Date todayTime = new Date();
         departmentDao.add(department);
         int departmentId = department.getId();
         Employee newEmployee = new Employee("John", "Doe", "EN001", "Analyst Networks", 1, departmentId);

@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class Sql2oEmployeeDaoTest {
@@ -82,6 +84,7 @@ class Sql2oEmployeeDaoTest {
     @Test
     public void clearAllClearsAllEmployees() throws Exception {
         Employee employee = setupNewEmployee();
+        Date todayTime = new Date();
         Employee otherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", 2, 1);
         employeeDao.add(employee);
         employeeDao.add(otherEmployee);
@@ -93,6 +96,7 @@ class Sql2oEmployeeDaoTest {
 
     // helper method
     public Employee setupNewEmployee(){
+        Date todayTime = new Date();
         return new Employee("John", "Doe", "EN001", "Analyst Networks", 1, 1);
     }
 
