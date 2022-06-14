@@ -21,7 +21,7 @@ public class Sql2oEmployeeDao implements EmployeeDao {
 
     @Override
     public void add(Employee employee) {
-        String sql = "INSERT INTO employees (first_name, last_name, staff_id, role, position_id, department_id) VALUES (:first_name, :last_name, :staff_id, :role, :position_id, :department_id)"; //raw sql
+        String sql = "INSERT INTO employees (first_name, last_name, staff_id, role, position_id, department_id, created_at) VALUES (:first_name, :last_name, :staff_id, :role, :position_id, :department_id, :created_at)"; //raw sql
 //        Date todayTime = new Date();
 //        String pattern = "MM/dd/yyyy HH:mm:ss";
 //        DateFormat df = new SimpleDateFormat(pattern);

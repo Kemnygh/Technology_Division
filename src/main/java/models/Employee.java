@@ -11,16 +11,17 @@ public class Employee {
     private int id;
     private int department_id;
     private int position_id;
-    private Date created_at;
+    private String created_at;
     private String updated;
 
-    public Employee(String first_name, String last_name, String staff_id, String role, int position_id, int department_id){
+    public Employee(String first_name, String last_name, String staff_id, String role, int position_id, int department_id, String created_at){
         this.first_name = first_name;
         this.last_name = last_name;
         this.staff_id = staff_id;
         this.role = role;
         this.position_id = position_id;
         this.department_id = department_id;
+        this.created_at = created_at;
     }
 
     @Override
@@ -68,7 +69,7 @@ public class Employee {
         return staff_id;
     }
 
-    public Date getCreated_at() {
+    public String getCreated_at() {
         return created_at;
     }
 

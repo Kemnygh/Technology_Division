@@ -84,8 +84,7 @@ class Sql2oEmployeeDaoTest {
     @Test
     public void clearAllClearsAllEmployees() throws Exception {
         Employee employee = setupNewEmployee();
-        Date todayTime = new Date();
-        Employee otherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", 2, 1);
+        Employee otherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", 2, 1, "2022-06-14");
         employeeDao.add(employee);
         employeeDao.add(otherEmployee);
         int daoSize = employeeDao.getAll().size();
@@ -96,8 +95,7 @@ class Sql2oEmployeeDaoTest {
 
     // helper method
     public Employee setupNewEmployee(){
-        Date todayTime = new Date();
-        return new Employee("John", "Doe", "EN001", "Analyst Networks", 1, 1);
+        return new Employee("John", "Doe", "EN001", "Analyst Networks", 1, 1, "2022-06-14");
     }
 
 }

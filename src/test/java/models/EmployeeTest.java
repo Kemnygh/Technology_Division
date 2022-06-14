@@ -43,6 +43,6 @@ class EmployeeTest {
 
     public Employee setupNewEmployee(){
         Date todayTime = new Date();
-        return new Employee("John", "Doe", "EN001", "Manager DevOps",1, 1);
+        return new Employee("John", "Doe", "EN001", "Manager DevOps",1, 1, "2022-06-14");
     }
 }

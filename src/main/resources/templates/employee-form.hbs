@@ -74,6 +74,15 @@
                         <input class="form-control border-bottom input-field" id="role" name="role" type="text" placeholder="Enter role e.g. Network Analyst" required>
                     </div>
                     <div class="mb-3 input-div">
+                        <input class="form-control border-bottom input-field" id="created_at" name="created_at" type="hidden" required>
+                    </div>
+                        <script>
+                            function created() {
+                            let dt = new Date().toLocaleString()
+                            document.getElementById('created_at').value = dt
+                            }
+                        </script>
+                    <div class="mb-3 input-div">
                         <label for="position_id" class="form-label">Position</label>
                         <select id="position_id" name="position_id" class="form-select">
                             {{#each positions}}
@@ -97,7 +106,7 @@
                 {{else}}
                     <p class="text-center"> Add a Department before you adding an Employee <a href="/departments/new">+ New Department</a> </p>
                 {{/if}}
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success" onclick="created()">Submit</button>
             </form>
         </div>
     {{/if}}

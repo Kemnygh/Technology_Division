@@ -12,6 +12,7 @@ public interface EmployeeDao {
     // CREATE
     void add(Employee employee);
 
+
     // READ
     Employee findById(int id);
 

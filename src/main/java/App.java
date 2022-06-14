@@ -67,8 +67,8 @@ public class App {
         //post: process new employee form
         post("/employees", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            String pattern = "MM/dd/yyyy HH:mm:ss";
-            DateFormat df = new SimpleDateFormat(pattern);
+//            String pattern = "MM/dd/yyyy HH:mm:ss";
+//            DateFormat df = new SimpleDateFormat(pattern);
             List<Department> allDepartments = departmentDao.getAll();
             model.put("departments", allDepartments);
             String firstName = req.queryParams("first_name");
@@ -77,8 +77,8 @@ public class App {
             String role = req.queryParams("role");
             int positionId = Integer.parseInt(req.queryParams("position_id"));
             int departmentId = Integer.parseInt(req.queryParams("department_id"));
-//            Date createdAt = df.parse(req.queryParams("created_at"));
-            Employee newEmployee = new Employee(firstName, lastName, staffId, role, positionId, departmentId );
+            String createdAt = req.queryParams("created_at");
+            Employee newEmployee = new Employee(firstName, lastName, staffId, role, positionId, departmentId, createdAt );
             employeeDao.add(newEmployee);
             res.redirect("/");
             return null;

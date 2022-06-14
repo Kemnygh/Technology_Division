@@ -107,8 +107,8 @@ class Sql2oPositionDaoTest {
         Date todayTime = new Date();
         positionDao.add(position);
         int positionId = position.getId();
-        Employee newEmployee = new Employee("John", "Doe", "EN001", "Analyst Networks",  positionId, 1);
-        Employee anotherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", positionId, 1);
+        Employee newEmployee = new Employee("John", "Doe", "EN001", "Analyst Networks",  positionId, 1, "2022-06-14");
+        Employee anotherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", positionId, 1, "2022-06-14");
         employeeDao.add(newEmployee);
         employeeDao.add(anotherEmployee); //we are not adding task 3 so we can test things precisely.
         assertEquals(2, positionDao.getAllEmployeesByPosition(positionId).size());
