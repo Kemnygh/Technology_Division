@@ -36,8 +36,20 @@
                     document.getElementById('created_at').value = dt
                     }
                 </script>
-                <button type="submit" class="btn btn-success btn-sm" onclick="created()">Submit</button>
+                <button type="submit" class="btn btn-success btn-sm mb-3" onclick="created()">Submit</button>
             </form>
+            {{#if errors}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i><strong>  Error!</strong> {{errors}}.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {{/if}}
+            {{#if success}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: auto;">
+                    <i class="bi bi-check-circle-fill"></i><strong>  Success!</strong> {{success}}.<a href="/employees/new">  Create new employee  <i class="bi bi-people-fill"></i></a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {{/if}}
         </div>
     {{/if}}
 {{/partial}}

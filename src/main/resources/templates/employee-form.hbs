@@ -122,8 +122,20 @@
                 {{else}}
                     <p class="text-center"> Add a Department before you adding an Employee <a href="/departments/new">+ New Department</a> </p>
                 {{/if}}
-                <button type="submit" class="btn btn-success" onclick="created()">Submit</button>
+                <button type="submit" class="btn btn-success mb-3" onclick="created()">Submit</button>
             </form>
+            {{#if errors}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i><strong>  Error!</strong> {{errors}}. Confirm that the Staff ID, phone number and email address are unique.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {{/if}}
+            {{#if success}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: auto;">
+                    <i class="bi bi-check-circle-fill"></i><strong>  Success!</strong> {{success}}.<a href="/">  Go to Home <i class="bi bi-house-fill"></i></a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {{/if}}
         </div>
     {{/if}}
 {{/partial}}

@@ -67,9 +67,10 @@ public class App {
         //post: process new employee form
         post("/employees", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-//            String pattern = "MM/dd/yyyy HH:mm:ss";
-//            DateFormat df = new SimpleDateFormat(pattern);
+            String errMsg = "Employee already exists";
+            String successMsg = "Employee created successfully";
             List<Department> allDepartments = departmentDao.getAll();
+            List<Employee> employees = employeeDao.getAll();
             model.put("departments", allDepartments);
             String firstName = req.queryParams("first_name");
             String lastName = req.queryParams("last_name");
@@ -81,9 +82,21 @@ public class App {
             int departmentId = Integer.parseInt(req.queryParams("department_id"));
             String createdAt = req.queryParams("created_at");
             Employee newEmployee = new Employee(firstName, lastName, staffId, role, phoneNo, email, positionId, departmentId, createdAt );
+            for(Employee employee : employees){
+                if(employee.getStaff_id().equals(staffId) || employee.getPhone_no().equals(phoneNo)|| employee.getEmail().equals(email)){
+                    model.put("errors", errMsg);
+                    model.put("positions", positionDao.getAll());
+                    model.put("departments", departmentDao.getAll());
+                    return new ModelAndView(model, "employee-form.hbs");
+                }
+            }
             employeeDao.add(newEmployee);
-            res.redirect("/");
-            return null;
+//            res.redirect("/");
+//            return null;
+            model.put("success", successMsg);
+            model.put("positions", positionDao.getAll());
+            model.put("departments", departmentDao.getAll());
+            return new ModelAndView(model, "employee-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //get: show an individual Employee
@@ -148,7 +161,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             List<Department> departments = departmentDao.getAll();
             String errMsg = "Department already exists";
-            String successMsg = "Department Added successfully";
+            String successMsg = "Department created successfully";
             String name = req.queryParams("name");
             String createdAt = req.queryParams("created_at");
             Department newDepartment = new Department(name, createdAt);
@@ -227,12 +240,25 @@ public class App {
         //post: process new positions form
         post("/positions", (req, res) -> { //new
             Map<String, Object> model = new HashMap<>();
+            String errMsg = "Position already exists";
+            String successMsg = "Position created successfully";
+            List<Position> positions = positionDao.getAll();
             String name = req.queryParams("name");
             String createdAt = req.queryParams("created_at");
             Position newPosition = new Position(name, createdAt);
+            for(Position pos : positions){
+                if(pos.getName().equals(name)){
+                    model.put("errors", errMsg);
+                    model.put("positions", positionDao.getAll());
+                    model.put("departments", departmentDao.getAll());
+                    return new ModelAndView(model, "position-form.hbs");
+                }
+            }
             positionDao.add(newPosition);
-            res.redirect("/");
-            return null;
+            model.put("success", successMsg);
+            model.put("positions", positionDao.getAll());
+            model.put("departments", departmentDao.getAll());
+            return new ModelAndView(model, "position-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //get: show an individual positions and employees it contains
