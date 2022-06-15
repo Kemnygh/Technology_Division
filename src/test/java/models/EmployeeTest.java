@@ -32,14 +32,55 @@ class EmployeeTest {
         assertEquals("EN001", employee.getStaff_id());
     }
 
-//    @Test
-//    public void gettingCurrentDate(){
-//        Employee employee = setupNewEmployee();
-//        Date todayTime = new Date();
-//        assertEquals(employee.getCreatedAt(), todayTime);
-//    }
+    @Test
+    public void EmployeeInstantiatesWithRole() throws Exception {
+        Employee employee = setupNewEmployee();
+        assertEquals("Manager DevOps", employee.getRole());
+    }
 
+    @Test
+    public void EmployeeInstantiatesWithPhoneNumber() throws Exception {
+        Employee employee = setupNewEmployee();
+        assertEquals("0712345678", employee.getPhone_no());
+    }
 
+    @Test
+    public void EmployeeInstantiatesWithEmail() throws Exception {
+        Employee employee = setupNewEmployee();
+        assertEquals("jdoe@company.co.ke", employee.getEmail());
+    }
+
+    @Test
+    public void EmployeeInstantiatesWithPositionId() throws Exception {
+        Employee employee = setupNewEmployee();
+        assertEquals(1, employee.getPosition_id());
+    }
+
+    @Test
+    public void EmployeeInstantiatesWithDepartmentId() throws Exception {
+        Employee employee = setupNewEmployee();
+        assertEquals(1, employee.getDepartment_id());
+    }
+
+    @Test
+    public void EmployeeInstantiatesWithCreatedDate() throws Exception {
+        Employee employee = setupNewEmployee();
+        assertEquals("2022-06-14", employee.getCreated_at());
+    }
+
+    @Test
+    public void EmployeeInstantiatesWithGetId() throws Exception {
+        Employee employee = setupNewEmployee();
+        employee.setId(1);
+        assertEquals(1, employee.getId());
+    }
+
+    @Test
+    public void EmployeeInstantiatesWithUpdated() throws Exception {
+        Employee employee = setupNewEmployee();
+        employee.setUpdated("2022-04-15");
+        assertEquals("2022-04-15", employee.getUpdated());
+    }
 
     public Employee setupNewEmployee(){
         Date todayTime = new Date();

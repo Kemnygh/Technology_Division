@@ -2,12 +2,10 @@ package dao;
 
 import models.Department;
 import models.Employee;
-import org.eclipse.jetty.server.Response;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
-import java.util.Date;
 import java.util.List;
 
 public class Sql2oDepartmentDao implements DepartmentDao {

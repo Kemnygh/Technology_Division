@@ -2,8 +2,6 @@ package models;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class PositionTest {
@@ -20,7 +18,25 @@ class PositionTest {
         assertEquals("HOD", position.getName());
     }
 
+    @Test
+    void getCreatedInstantiatesCorrectly() {
+        Position position = setupNewPosition();
+        assertEquals("2022-06-14", position.getCreated_at());
+    }
 
+    @Test
+    public void PositionInstantiatesWithGetId() throws Exception {
+        Position position = setupNewPosition();
+        position.setId(1);
+        assertEquals(1, position.getId());
+    }
+
+    @Test
+    public void PositionInstantiatesWithUpdated() throws Exception {
+        Position position = setupNewPosition();
+        position.setUpdated("2022-04-15");
+        assertEquals("2022-04-15", position.getUpdated());
+    }
 
     public Position setupNewPosition(){
         return new Position("HOD", "2022-06-14");

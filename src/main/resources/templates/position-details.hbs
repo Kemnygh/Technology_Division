@@ -4,14 +4,14 @@
         <p>Employees:: <span style="color: grey;">Select employee ID to see more details</span></p>
         <table class="table table-hover table-responsive table-sm">
             <thead class="table-info">
-            <tr>
-                <th scope="col">Staff ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Role</th>
-                <th scope="col">Date Created</th>
-                <th scope="col">Last Updated</th>
-            </tr>
+                <tr>
+                    <th scope="col">Staff ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Last Updated</th>
+                </tr>
             </thead>
             <tbody class="table-group-divider">
             {{#each employees}}
@@ -24,9 +24,9 @@
                     <td>{{updated}}</td>
                 </tr>
             {{/each}}
-            <tr>
-                <th scope="row" colspan="6"><a href="/employees/new">Create New Employee</a>  |  <a href="/positions/{{position.id}}/edit">Edit Position</a>  |  <a href="/positions/{{position.id}}/delete">DELETE Position</a></th>
-            </tr>
+                <tr>
+                    <th scope="row" colspan="6"><a href="/employees/new">Create New Employee</a>  |  <a href="/positions/{{position.id}}/edit">Edit Position</a>  |  <a href="/positions/{{position.id}}/delete">DELETE Position</a></th>
+                </tr>
             </tbody>
         </table>
     </div>

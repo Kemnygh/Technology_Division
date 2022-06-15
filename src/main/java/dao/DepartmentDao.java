@@ -2,9 +2,6 @@ package dao;
 
 import models.Department;
 import models.Employee;
-import models.Position;
-
-import java.util.Date;
 import java.util.List;
 
 public interface DepartmentDao {

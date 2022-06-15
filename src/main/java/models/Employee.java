@@ -1,6 +1,5 @@
 package models;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class Employee {
@@ -41,11 +40,15 @@ public class Employee {
         return Objects.hash(getFirst_name(), getLast_name(), getStaff_id(), getRole(), getId(), getPhone_no(), getEmail(), getDepartment_id(), getPosition_id(), getCreated_at(), getUpdated());
     }
 
-    public void setId(int id) {
+   public void setId(int id) {
         this.id = id;
     }
 
-   public int getId() {
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
+
+    public int getId() {
         return id;
     }
 

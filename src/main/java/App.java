@@ -1,9 +1,5 @@
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
-
-import dao.EmployeeDao;
 import dao.Sql2oDepartmentDao;
 import dao.Sql2oEmployeeDao;
 import dao.Sql2oPositionDao;
@@ -91,8 +87,6 @@ public class App {
                 }
             }
             employeeDao.add(newEmployee);
-//            res.redirect("/");
-//            return null;
             model.put("success", successMsg);
             model.put("positions", positionDao.getAll());
             model.put("departments", departmentDao.getAll());
@@ -174,8 +168,6 @@ public class App {
                 }
             }
             departmentDao.add(newDepartment);
-//            res.redirect("/");
-//            return null;
             model.put("positions", positionDao.getAll());
             model.put("departments", departmentDao.getAll());
             model.put("success", successMsg);

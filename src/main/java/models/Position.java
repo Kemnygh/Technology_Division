@@ -1,6 +1,5 @@
 package models;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class Position {
@@ -33,6 +32,10 @@ public class Position {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
     }
 
     public String getCreated_at() {

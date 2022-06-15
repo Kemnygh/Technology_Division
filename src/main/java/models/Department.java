@@ -1,6 +1,5 @@
 package models;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class Department {
@@ -29,6 +28,10 @@ public class Department {
 
     public int getId() {
         return id;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
     }
 
     public void setId(int id) {
