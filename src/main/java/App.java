@@ -48,7 +48,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: delete all employees
-        get("/employees/delete", (req, res) -> {
+        get("/employees/delete/all", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             employeeDao.clearAllEmployees(); //change
             res.redirect("/");
@@ -227,6 +227,13 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
+        get("/delete/departments/all", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            departmentDao.clearAllDepartments();
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
         //show new positions form
         get("/positions/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -301,6 +308,13 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             int positionId = Integer.parseInt(req.params("id"));
             positionDao.deleteById(positionId);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        get("/delete/positions/all", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            positionDao.clearAllPositions();
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());

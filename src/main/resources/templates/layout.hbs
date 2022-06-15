@@ -43,6 +43,7 @@
                                         {{/each}}
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="/positions/new">+ New Position</a></li>
+                                        <li><a class="dropdown-item text-danger" href="/delete/positions/all">Delete All Positions</a></li>
                                     {{else}}
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="/positions/new">+ New position</a></li>
@@ -60,6 +61,7 @@
                                         {{/each}}
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="/departments/new">+ New Department</a></li>
+                                        <li><a class="dropdown-item text-danger" href="/delete/departments/all">Delete All Departments</a></li>
                                     {{else}}
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="/departments/new">+ New Department</a></li>
@@ -83,7 +85,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="add-buttons" style="padding-left: 10px; padding-right: 10px;">
                 <div>
                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -92,12 +93,14 @@
                         <button type="button" class="btn btn-success" onclick="window.location.href='/departments/new';">+ New Department <i class="bi bi-collection-fill"></i></button>
                     </div>
                     <hr>
-                    <p>Current Departments</p>
+                    {{#if departments}}
+                    <p style="color: grey;">Current Departments:  <a class="" href="/delete/departments/all">Delete All Departments</a></p>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         {{# each departments}}
                         <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/departments/{{id}}';">{{name}}</button>
                         {{/each}}
                     </div>
+                    {{/if}}
                     <hr>
                 </div>
             </div>
@@ -114,7 +117,8 @@
                 {{/block}}
 <!--                    <hr>-->
                 <nav class="nav-footer text-white">
-                    <li class=text-white" id="copyRight">@Copyright 2022 Technology Division</li>
+                    <li class="text-danger" id="copyRight"><a class="text-danger" style="font-weight: bold;" href="/delete/all">**Delete All Items</a></li>
+                    <li class="text-white ms-auto" id="copyRight">@Copyright 2022 Technology Division</li>
                 </nav>
             </div>
         </div>

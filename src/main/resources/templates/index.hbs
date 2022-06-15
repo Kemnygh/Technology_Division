@@ -17,13 +17,15 @@
                 <tbody class="table-group-divider">
         {{#each employees }}
             <tr>
-<!--                    <th scope="row"><a href="/departments/{{department_id}}/employees/{{id}}">{{staff_id}}</a></th>-->
                 <th scope="row"><a href="/employees/{{id}}/{{position_id}}/{{department_id}}">{{staff_id}}</a></th>
                 <td>{{first_name}}</td>
                 <td>{{last_name}}</td>
                 <td>{{phone_no}}</td>
                 <td>{{email}}</td>
                 <td>{{role}}</td>
+            </tr>
+            <tr>
+                <td colspan="6"><a href="/employees/delete/all">Delete All Employees</a></td>
             </tr>
         {{/each}}
                 </tbody>
