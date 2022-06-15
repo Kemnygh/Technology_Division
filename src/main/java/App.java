@@ -139,18 +139,34 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             List<Department> departments = departmentDao.getAll(); //refresh list of links for navbar
             model.put("departments", departments);
+            model.put("positions", positionDao.getAll());
             return new ModelAndView(model, "department-form.hbs"); //new
         }, new HandlebarsTemplateEngine());
 
         //post: process new department form
         post("/departments", (req, res) -> { //new
             Map<String, Object> model = new HashMap<>();
+            List<Department> departments = departmentDao.getAll();
+            String errMsg = "Department already exists";
+            String successMsg = "Department Added successfully";
             String name = req.queryParams("name");
             String createdAt = req.queryParams("created_at");
             Department newDepartment = new Department(name, createdAt);
+            for(Department dep : departments){
+                if(dep.getName().equals(name)){
+                    model.put("errors", errMsg);
+                    model.put("positions", positionDao.getAll());
+                    model.put("departments", departmentDao.getAll());
+                    return new ModelAndView(model, "department-form.hbs");
+                }
+            }
             departmentDao.add(newDepartment);
-            res.redirect("/");
-            return null;
+//            res.redirect("/");
+//            return null;
+            model.put("positions", positionDao.getAll());
+            model.put("departments", departmentDao.getAll());
+            model.put("success", successMsg);
+            return new ModelAndView(model, "department-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //get: show an individual departments and employees it contains
@@ -204,7 +220,7 @@ public class App {
             List<Department> allDepartments = departmentDao.getAll();
             List<Position> position = positionDao.getAll(); //refresh list of links for navbar
             model.put("departments", allDepartments);
-            model.put("position", position);
+            model.put("positions", position);
             return new ModelAndView(model, "position-form.hbs"); //new
         }, new HandlebarsTemplateEngine());
 
