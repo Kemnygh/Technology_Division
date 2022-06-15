@@ -109,8 +109,8 @@ class Sql2oDepartmentDaoTest {
         Date todayTime = new Date();
         departmentDao.add(department);
         int departmentId = department.getId();
-        Employee newEmployee = new Employee("John", "Doe", "EN001", "Analyst Networks", 1, departmentId, "2022-06-14");
-        Employee anotherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", 2, departmentId, "2022-06-14");
+        Employee newEmployee = new Employee("John", "Doe", "EN001", "Analyst Networks", "0712345678", "jdoe@company.co.ke", 1, departmentId, "2022-06-14");
+        Employee anotherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", "0712345679", "jndoe@company.co.ke",2, departmentId, "2022-06-14");
         employeeDao.add(newEmployee);
         employeeDao.add(anotherEmployee); //we are not adding task 3 so we can test things precisely.
         assertEquals(2, departmentDao.getAllEmployeesByDepartment(departmentId).size());
@@ -124,8 +124,8 @@ class Sql2oDepartmentDaoTest {
         Date todayTime = new Date();
         departmentDao.add(department);
         int departmentId = department.getId();
-        Employee newEmployee = new Employee("John", "Doe", "EN001", "Analyst Networks", 1, departmentId, "2022-06-14");
-        Employee anotherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", 2, departmentId, "2022-06-14");
+        Employee newEmployee = new Employee("John", "Doe", "EN001", "Analyst Networks", "0712345678", "jdoe@company.co.ke",1, departmentId, "2022-06-14");
+        Employee anotherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", "0712345679", "jndoe@company.co.ke",2, departmentId, "2022-06-14");
         employeeDao.add(newEmployee);
         employeeDao.add(anotherEmployee);
         departmentDao.deleteAllEmployeesByDepartment(departmentId);

@@ -75,10 +75,12 @@ public class App {
             String lastName = req.queryParams("last_name");
             String staffId = req.queryParams("staff_id");
             String role = req.queryParams("role");
+            String phoneNo = req.queryParams("phone_no");
+            String email = req.queryParams("email");
             int positionId = Integer.parseInt(req.queryParams("position_id"));
             int departmentId = Integer.parseInt(req.queryParams("department_id"));
             String createdAt = req.queryParams("created_at");
-            Employee newEmployee = new Employee(firstName, lastName, staffId, role, positionId, departmentId, createdAt );
+            Employee newEmployee = new Employee(firstName, lastName, staffId, role, phoneNo, email, positionId, departmentId, createdAt );
             employeeDao.add(newEmployee);
             res.redirect("/");
             return null;
@@ -122,10 +124,12 @@ public class App {
             String lastName = req.queryParams("last_name");
             String staffId = req.queryParams("staff_id");
             String role = req.queryParams("role");
+            String phoneNo = req.queryParams("phone_no");
+            String email = req.queryParams("email");
             int positionId = Integer.parseInt(req.queryParams("position_id"));
             int departmentId = Integer.parseInt(req.queryParams("department_id"));
             String updated = req.queryParams("updated");
-            employeeDao.update(employeeToEditId, firstName, lastName, staffId, role, positionId, departmentId, updated );
+            employeeDao.update(employeeToEditId, firstName, lastName, staffId, role, phoneNo, email, positionId, departmentId, updated );
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());

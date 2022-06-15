@@ -68,7 +68,7 @@ class Sql2oEmployeeDaoTest {
     public void updateChangesEmployeeContent() throws Exception {
         Employee employee = setupNewEmployee();
         employeeDao.add(employee);
-        employeeDao.update(employee.getId(), "John", "Doe", "EN002", "Manager Networks", 2, 2, "2022-06-04");
+        employeeDao.update(employee.getId(), "John", "Doe", "EN002", "Manager Networks", "0712345678", "jdoe@company.co.ke", 2, 2, "2022-06-04");
         Employee updatedEmployee = employeeDao.findById(employee.getId());
         assertNotEquals(employee, updatedEmployee);
     }
@@ -84,7 +84,7 @@ class Sql2oEmployeeDaoTest {
     @Test
     public void clearAllClearsAllEmployees() throws Exception {
         Employee employee = setupNewEmployee();
-        Employee otherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", 2, 1, "2022-06-14");
+        Employee otherEmployee = new Employee("Jane", "Doe", "EN002", "Manager Networks", "0712345679", "jndoe@company.co.ke",2, 1, "2022-06-14");
         employeeDao.add(employee);
         employeeDao.add(otherEmployee);
         int daoSize = employeeDao.getAll().size();
@@ -95,7 +95,7 @@ class Sql2oEmployeeDaoTest {
 
     // helper method
     public Employee setupNewEmployee(){
-        return new Employee("John", "Doe", "EN001", "Analyst Networks", 1, 1, "2022-06-14");
+        return new Employee("John", "Doe", "EN001", "Analyst Networks", "0712345678", "jdoe@company.co.ke",1, 1, "2022-06-14");
     }
 
 }

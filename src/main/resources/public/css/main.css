@@ -1,6 +1,6 @@
 .main-block{
     background-color: #efefef;
-    height: 100vh;
+    height: 100%;
 }
 
 .card-img{
@@ -67,8 +67,6 @@
 
 
 .footer {
-    position: absolute;
-    bottom: 0;
   }
 
 .nav-footer {
