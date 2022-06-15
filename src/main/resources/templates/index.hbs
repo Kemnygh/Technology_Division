@@ -1,33 +1,35 @@
 {{#partial "content"}}
 
     <h3 class="index-title">Employees</h3>
-    <table class="table table-hover table-responsive table-sm">
-        <thead class="table-info">
-        <tr>
-            <th scope="col">Staff ID</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Phone Number</th>
-            <th scope="col">Email</th>
-            <th scope="col">Role</th>
-        </tr>
-        </thead>
-        <tbody class="table-group-divider">
+    <div class="table-div">
+        <table class="table table-hover table-responsive table-sm">
+            <thead class="table-info">
+            <tr>
+                <th scope="col">Staff ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
 
-        {{#if employees}}
-            {{#each employees }}
-                <tr>
-<!--                    <th scope="row"><a href="/departments/{{department_id}}/employees/{{id}}">{{staff_id}}</a></th>-->
-                    <th scope="row"><a href="/employees/{{id}}/{{position_id}}/{{department_id}}">{{staff_id}}</a></th>
-                    <td>{{first_name}}</td>
-                    <td>{{last_name}}</td>
-                    <td>{{phone_no}}</td>
-                    <td>{{email}}</td>
-                    <td>{{role}}</td>
-                </tr>
-            {{/each}}
-        </tbody>
-    </table>
+            {{#if employees}}
+                {{#each employees }}
+                    <tr>
+    <!--                    <th scope="row"><a href="/departments/{{department_id}}/employees/{{id}}">{{staff_id}}</a></th>-->
+                        <th scope="row"><a href="/employees/{{id}}/{{position_id}}/{{department_id}}">{{staff_id}}</a></th>
+                        <td>{{first_name}}</td>
+                        <td>{{last_name}}</td>
+                        <td>{{phone_no}}</td>
+                        <td>{{email}}</td>
+                        <td>{{role}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
     {{else}}
         <p>No Entries!</p>
     {{/if}}
