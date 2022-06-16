@@ -24,8 +24,8 @@ public class App {
         staticFileLocation("/public");
 //        String connectionString = "jdbc:postgresql://localhost:5432/technology";
 //        Sql2o sql2o = new Sql2o(connectionString, "postgres", "root");
-        String connectionString = "jdbc:postgresql://ec2-52-72-99-110.compute-1.amazonaws.com:5432/debpa2ibenapka";
-        Sql2o sql2o = new Sql2o(connectionString, "uxcmuucbdlpwuq", "b41305f3abd8f64cf82fae3ede6afb37a8f722743906d4449fe92496e78d31f2");
+        String connectionString = "jdbc:postgresql://ec2-54-157-16-196.compute-1.amazonaws.com:5432/d7tud4qgs6a1rh";
+        Sql2o sql2o = new Sql2o(connectionString, "vihmcvrilcjdvx", "7bc6f9902209244dc5f89d6f5c60672c1b23fd025025e16847a2e06641cb203a");
         Sql2oEmployeeDao employeeDao = new Sql2oEmployeeDao(sql2o);
         Sql2oDepartmentDao departmentDao = new Sql2oDepartmentDao(sql2o);
         Sql2oPositionDao positionDao = new Sql2oPositionDao(sql2o);

@@ -1,0 +1,6 @@
+models\EmployeeTest.class
+dao\Sql2oDepartmentDaoTest.class
+dao\Sql2oEmployeeDaoTest.class
+models\DepartmentTest.class
+models\PositionTest.class
+dao\Sql2oPositionDaoTest.class
