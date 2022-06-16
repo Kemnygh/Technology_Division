@@ -1,11 +1,11 @@
-# Technology Division
+# Techdihives
 ###A prototype Spark, Java application to keep a track of employees and their details. Latest Version dated 15-JUNE-2022.
 
 
 #### By Kemuel Nalifuma
 
 ## Description
-Technology Division is a web application build from ground up using Spark and Java and connecting into a postgres Database,
+Techdihives is a web application standing for Technology Division archives build from ground up using Spark and Java and connecting into a postgres Database,
 it is meant to keep a track of employees within a Technology Division with a provision to create departments and positions
 that are associated with the employees in the division. It also gives visibility to details like when an employee was created
 and when they were last updated.
