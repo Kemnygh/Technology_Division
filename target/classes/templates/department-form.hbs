@@ -1,0 +1,57 @@
+{{#partial "content"}}
+    {{#if editDepartment}}
+        <div class="form-div">
+            <h1>Edit this Department!</h1>
+            <form action="/departments/{{department.id}}" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Edit this position's name</label>
+                    <input class="form-control input-field" id="newDepartment" name="newDepartment" type="text" value="{{department.name}}">
+                </div>
+                <div class="mb-3 input-div">
+                    <input class="form-control border-bottom input-field" id="updated" name="updated" type="hidden" value="{{department.updated}}" required>
+                </div>
+                <script>
+                    function time() {
+                    let dt = new Date().toLocaleString()
+                    document.getElementById('updated').value = dt
+                    }
+                </script>
+                <button type="submit" class="btn btn-success bt-sm" onclick="time()">Submit</button>
+            </form>
+        </div>
+    {{else}}
+        <div class="form-div">
+            <h3 class="text-center form-title">Add new Department</h3>
+            <form action="/departments" method="post" class="form">
+                <div class="mb-3 input-div">
+                    <label for="name" class="form-label">Department name</label>
+                    <input class="form-control border-bottom input-field" id="name" name="name" type="text" placeholder="Enter Department" required>
+                </div>
+                <div class="mb-3 input-div">
+                    <input class="form-control border-bottom input-field" id="created_at" name="created_at" type="hidden"  required>
+                </div>
+                <script>
+                    function created() {
+                    let dt = new Date().toLocaleString()
+                    document.getElementById('created_at').value = dt
+                    }
+                </script>
+                <button type="submit" class="btn btn-success bt-sm mb-3" onclick="created()">Submit</button>
+            </form>
+            {{#if errors}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i><strong>  Error!</strong> {{errors}}.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {{/if}}
+            {{#if success}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: auto;">
+                    <i class="bi bi-check-circle-fill"></i><strong>  Success!</strong> {{success}}.<a href="/employees/new">  Create new employee  <i class="bi bi-people-fill"></i></a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {{/if}}
+        </div>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}
