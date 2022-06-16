@@ -1,5 +1,5 @@
 # Technology Division
-###Application to keep a track of employees and their details. Latest Version dated 15-JUNE-2022.
+###A prototype Spark, Java application to keep a track of employees and their details. Latest Version dated 15-JUNE-2022.
 
 
 #### By Kemuel Nalifuma
@@ -29,6 +29,8 @@ and when they were last updated.
 * JavaScript
 * Postgres Database
 * SQL
+* Spark
+* Handlebars
 
 ## Support and contact details
 For any issues, questions, ideas or concerns please contact me through email kemnygh@gmail.com, you can also make suggestions to improve the code.
