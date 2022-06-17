@@ -15,6 +15,7 @@ and when they were last updated.
 * Creation of the databases and tables using queries earmarked on the create.sql file.
 * Deploy to a server environment to access the application
 * Git repository link  https://github.com/Kemnygh/Technology_Division.git
+* Published link https://tech-div-app.herokuapp.com/
 
 
 ## Known Bugs
