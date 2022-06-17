@@ -1,4 +1,18 @@
 {{#partial "content"}}
+    <hr>
+    {{#if positions}}
+        <div class="position">
+            <p style="color: grey;">Current Positions:  <a title="Create A new Position" style="text-decoration:none;" href="/positions/new">+<i class="bi bi-file-person"></i></a>  |
+                <a title="Delete All Positions" href="" data-bs-toggle="modal" data-bs-target="#staticDeleteAllPositions"><i class="bi bi-trash"></i></a>
+            </p>
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                {{# each positions}}
+                    <button type="button" class="btn btn-outline-success" onclick="window.location.href='/positions/{{id}}';">{{name}}</button>
+                {{/each}}
+            </div>
+        </div>
+    {{/if}}
+    <hr>
     {{#if editPosition}}
         <div class="form-div">
             <h1>Edit this Position!</h1>
@@ -16,8 +30,17 @@
                     document.getElementById('updated').value = dt
                     }
                 </script>
-                <button type="submit" class="btn btn-success bt-sm" onclick="time()">Submit</button>
+                <button type="submit" class="btn btn-success btn-sm mb-3" onclick="time()">Submit</button>
+                <button type="button" class="btn btn-danger btn-sm mb-3" onclick="window.location.href='/';">Cancel</button>
             </form>
+        </div>
+    {{else if updated}}
+        <div class="form-div">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: auto;">
+                <i class="bi bi-check-circle-fill"></i><strong>  Success!</strong> {{updated}} to {{pos}}.<br>
+                <a href="/">  Go to Home  <i class="bi bi-house-fill"></i></a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         </div>
     {{else}}
         <div class="form-div">
@@ -37,6 +60,7 @@
                     }
                 </script>
                 <button type="submit" class="btn btn-success btn-sm mb-3" onclick="created()">Submit</button>
+                <button type="button" class="btn btn-danger btn-sm mb-3" onclick="window.location.href='/';">Cancel</button>
             </form>
             {{#if errors}}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -46,7 +70,9 @@
             {{/if}}
             {{#if success}}
                 <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: auto;">
-                    <i class="bi bi-check-circle-fill"></i><strong>  Success!</strong> {{success}}.<a href="/employees/new">  Create new employee  <i class="bi bi-people-fill"></i></a>
+                    <i class="bi bi-check-circle-fill"></i><strong>  Success!</strong> {{success}}.<br>
+                    <a href="/employees/new">  Create new employee  <i class="bi bi-people-fill"></i></a>
+                    <a href="/">  Go to Home  <i class="bi bi-house-fill"></i></a>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             {{/if}}

@@ -1,4 +1,5 @@
 {{#partial "content"}}
+    <hr>
     {{#if editEmployee}}
         <div class="form-div">
             <h1 class="form-title">Edit this Task!</h1>
@@ -37,8 +38,8 @@
                     }
                 </script>
                 <div class="mb-3 input-div">
-                    <label for="position_id" class="form-label">Position</label>
-                    <select id="position_id" name="position_id" class="form-select">
+                    <label for="position_id" class="form-label">Change Position</label>
+                    <select id="position_id" name="position_id" class="form-select text-info">
                         {{#each positions}}
                             <option value="{{id}}">{{name}}</option>
                         {{/each}}
@@ -46,19 +47,43 @@
                 </div>
                 <div class="mb-3 input-div">
                     <label for="department_id" class="form-label">Change Department</label>
-                    <select id="department_id" name="department_id" class="form-select">
+                    <select id="department_id" name="department_id" class="form-select text-info">
                         {{#each departments}}
                             <option value="{{id}}">{{name}}</option>
                         {{/each}}
                     </select>
                 </div>
+                <div class="ms-auto">
+                    <button type="submit" class="btn btn-success btn-sm mb-3" onclick="time()">Submit</button>
+                    <button type="button" class="btn btn-danger btn-sm mb-3" onclick="window.location.href='/';">Cancel</button>
+                </div>
                 <p class="text-center">Don't see the right <span style="font-weight: bold">Department?</span><a href="/departments/new"> + New Department</a><br>
                     Or <br>the right <span style="font-weight: bold">Position?</span><a href="/positions/new"> + New Position</a></p>
-                <button type="submit" class="btn btn-success" onclick="time()">Submit</button>
+
             </form>
+        </div>
+    {{else if updated}}
+        <div class="form-div">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: auto;">
+                <i class="bi bi-check-circle-fill"></i><strong>  Success!</strong> {{updated}}.<br>
+                <a href="/">  Go to Home  <i class="bi bi-house-fill"></i></a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         </div>
     {{else}}
         <div class="form-div">
+            {{#if errors}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i><strong>  Error!</strong> {{errors}}. Confirm that the Staff ID, phone number and/or email address are unique.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {{/if}}
+            {{#if success}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: auto;">
+                    <i class="bi bi-check-circle-fill"></i><strong>  Success!</strong> {{success}}.<a href="/">  Go to Home <i class="bi bi-house-fill"></i></a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {{/if}}
         <h3 class="text-center form-title">Add Employee</h3>
             <form action="/employees" method="post" class="form">
                 {{#if departments}}
@@ -97,43 +122,34 @@
                         }
                     </script>
                     <div class="mb-3 input-div">
-                        <label for="position_id" class="form-label">Position</label>
-                        <select id="position_id" name="position_id" class="form-select">
+                        <label for="position_id" class="form-label">Select Position</label>
+                        <select id="position_id" name="position_id" class="form-select text-info">
                             {{#each positions}}
                                 <option value="{{id}}">{{name}}</option>
                             {{/each}}
                         </select>
                     </div>
                     <div class="mb-3 input-div">
-                        <label for="department_id" class="form-label">Department</label>
-                        <select id="department_id" name="department_id" class="form-select">
+                        <label for="department_id" class="form-label">Select Department</label>
+                        <select id="department_id" name="department_id" class="form-select text-info">
                             {{#each departments}}
                                 <option value="{{id}}">{{name}}</option>
                             {{/each}}
                         </select>
                     </div>
+                    <div>
+                        <button type="submit" class="btn btn-success btn-sm mb-3" onclick="created()">Submit</button>
+                        <button type="button" class="btn btn-danger btn-sm mb-3" onclick="window.location.href='/';">Cancel</button>
+                    </div>
                     <p class="text-center">Don't see the right <span style="font-weight: bold">Department?</span><a href="/departments/new"> + New Department</a><br>
                         Or <br>the right <span style="font-weight: bold">Position?</span><a href="/positions/new"> + New Position</a></p>
                 {{else}}
-                    <p class="text-center"> Add a Position before you adding an Employee <a href="/positions/new">+ New Position</a> </p>
+                    <p class="text-center"> Add a Position before adding an Employee <a href="/positions/new">+ New Position</a> </p>
                     {{/if}}
                 {{else}}
-                    <p class="text-center"> Add a Department before you adding an Employee <a href="/departments/new">+ New Department</a> </p>
+                    <p class="text-center"> Add a Department before adding an Employee <a href="/departments/new">+ New Department</a> </p>
                 {{/if}}
-                    <button type="submit" class="btn btn-success mb-3" onclick="created()">Submit</button>
             </form>
-            {{#if errors}}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="bi bi-exclamation-triangle-fill"></i><strong>  Error!</strong> {{errors}}. Confirm that the Staff ID, phone number and/or email address are unique.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {{/if}}
-            {{#if success}}
-                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: auto;">
-                    <i class="bi bi-check-circle-fill"></i><strong>  Success!</strong> {{success}}.<a href="/">  Go to Home <i class="bi bi-house-fill"></i></a>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {{/if}}
         </div>
     {{/if}}
 {{/partial}}

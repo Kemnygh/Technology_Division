@@ -17,15 +17,13 @@ public class App {
         if (processBuilder.environment().get("PORT") != null) {
             return Integer.parseInt(processBuilder.environment().get("PORT"));
         }
-        return 5051; //return default port if heroku-port isn't set (i.e. on localhost)
+        return 5051; //return port if heroku-port isn't set (i.e. on localhost)
     }
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
         staticFileLocation("/public");
-//        String connectionString = "jdbc:postgresql://localhost:5432/technology";
-//        Sql2o sql2o = new Sql2o(connectionString, "postgres", "root");
-        String connectionString = "jdbc:postgresql://ec2-54-157-16-196.compute-1.amazonaws.com:5432/d7tud4qgs6a1rh";
-        Sql2o sql2o = new Sql2o(connectionString, "vihmcvrilcjdvx", "7bc6f9902209244dc5f89d6f5c60672c1b23fd025025e16847a2e06641cb203a");
+        String connectionString = "jdbc:postgresql://localhost:5432/technology";
+        Sql2o sql2o = new Sql2o(connectionString, "postgres", "root");
         Sql2oEmployeeDao employeeDao = new Sql2oEmployeeDao(sql2o);
         Sql2oDepartmentDao departmentDao = new Sql2oDepartmentDao(sql2o);
         Sql2oPositionDao positionDao = new Sql2oPositionDao(sql2o);
@@ -54,7 +52,6 @@ public class App {
 
         //get: delete all employees
         get("/employees/delete/all", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             employeeDao.clearAllEmployees(); //change
             res.redirect("/");
             return null;
@@ -62,7 +59,6 @@ public class App {
 
         //get: delete an individual employee
         get("/employees/:id/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             int idOfEmployeeToDelete = Integer.parseInt(req.params("id"));
             employeeDao.deleteById(idOfEmployeeToDelete);
             res.redirect("/");
@@ -146,8 +142,8 @@ public class App {
             int departmentId = Integer.parseInt(req.queryParams("department_id"));
             String updated = req.queryParams("updated");
             employeeDao.update(employeeToEditId, firstName, lastName, staffId, role, phoneNo, email, positionId, departmentId, updated );
-            res.redirect("/");
-            return null;
+            model.put("updated", "Employee updated successfully");
+            return new ModelAndView(model, "employee-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //show new Department form
@@ -199,7 +195,6 @@ public class App {
         //get: show a form to update a department
         get("/departments/:id/edit", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            System.out.println(req.params());
             model.put("editDepartment", true);
             Department department = departmentDao.findById(Integer.parseInt(req.params("id")));
             model.put("department", department);
@@ -214,13 +209,13 @@ public class App {
             String newName = req.queryParams("newDepartment");
             String updateTime = req.queryParams("updated");
             departmentDao.update(idOfDepartmentToEdit, newName, updateTime);
-            res.redirect("/");
-            return null;
+            model.put("updated", "Department updated successfully");
+            model.put("dep", newName);
+            return new ModelAndView(model, "department-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //get: delete all departments, positions and all employees
         get("/departments/:id/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             int departmentId = Integer.parseInt(req.params("id"));
             departmentDao.deleteById(departmentId);
             departmentDao.deleteAllEmployeesByDepartment(departmentId);
@@ -229,7 +224,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         get("/delete/departments/all", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             departmentDao.clearAllDepartments();
             res.redirect("/");
             return null;
@@ -300,13 +294,13 @@ public class App {
             String newName = req.queryParams("newPosition");
             String updateTime = req.queryParams("updated");
             positionDao.update(idOfPositionToEdit, newName, updateTime);
-            res.redirect("/");
-            return null;
+            model.put("updated", "Position updated successfully");
+            model.put("pos", newName);
+            return new ModelAndView(model, "position-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //get: delete all departments, positions and all employees
         get("/positions/:id/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             int positionId = Integer.parseInt(req.params("id"));
             positionDao.deleteById(positionId);
             res.redirect("/");
@@ -314,14 +308,12 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         get("/delete/positions/all", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             positionDao.clearAllPositions();
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
 
         get("/delete/all", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
             positionDao.clearAllPositions();
             departmentDao.clearAllDepartments();
             employeeDao.clearAllEmployees();

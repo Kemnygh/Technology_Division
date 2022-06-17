@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mycompany.app</groupId>
-    <artifactId>techdihives</artifactId>
+    <artifactId>tech-div-app</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -97,9 +97,9 @@
                 <version>3.0.4</version>
                 <configuration>
                     <jdkVersion>1.8</jdkVersion>
-                    <appName>techdihives</appName>
+                    <appName>tech-div-app</appName>
                     <processTypes>
-                        <web>java -jar target/my-app-1.0-jar-with-dependencies.jar</web>
+                        <web>java -jar target/tech-div-app-1.0-jar-with-dependencies.jar</web>
                     </processTypes>
                 </configuration>
             </plugin>

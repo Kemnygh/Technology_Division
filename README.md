@@ -31,6 +31,7 @@ and when they were last updated.
 * SQL
 * Spark
 * Handlebars
+* Bootstrap
 
 ## Support and contact details
 For any issues, questions, ideas or concerns please contact me through email kemnygh@gmail.com, you can also make suggestions to improve the code.

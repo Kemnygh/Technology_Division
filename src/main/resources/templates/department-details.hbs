@@ -1,11 +1,12 @@
 {{#partial "content"}}
-    <h3 class="index-title">{{department.name}} Dept.<br>
-        <span class="text-muted" style="font-size: 18px;"><strong>Department Created On:</strong>  {{department.created_at}}</span>
+    <hr>
+    <h3 class="index-title">{{department.name}} Dept.   <span class="text-muted title-span"><strong>Department Created On:</strong>  {{department.created_at}}</span>
     </h3>
+
     <div class="table-div">
         <p>Employees:: <span style="color: grey;">Select employee ID to see more details</span></p>
         <table class="table table-hover table-responsive table-sm">
-            <thead class="table-info">
+            <thead class="table-info text-center">
                 <tr>
                     <th scope="col">Staff ID</th>
                     <th scope="col">First Name</th>
@@ -15,9 +16,9 @@
                     <th scope="col">Last Updated</th>
                 </tr>
             </thead>
-            <tbody class="table-group-divider">
+            <tbody class="table-group-divider bg-light">
             {{#each employees}}
-                <tr>
+                <tr class="text-center">
                     <th scope="row"><a href="/employees/{{id}}/{{position_id}}/{{department_id}}">{{staff_id}}</a></th>
                     <td>{{first_name}}</td>
                     <td>{{last_name}}</td>
@@ -27,10 +28,33 @@
                 </tr>
             {{/each}}
                 <tr>
-                    <th scope="row" colspan="6"><a href="/employees/new">Create New Employee</a>  |  <a href="/departments/{{department.id}}/edit">Edit Department</a>  |  <a href="/departments/{{department.id}}/delete">DELETE Department</a></th>
+                    <th scope="row" colspan="6"><a href="/employees/new">Create New Employee</a>  |
+                        <a href="/departments/{{department.id}}/edit" >Edit Department</a>  |
+                        <a href="" data-bs-toggle="modal" data-bs-target="#staticDeleteDepartment">Delete Department</a>  |
+                        <a href="/" >Home</a>
+                    </th>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <!-- Delete Department -->
+    <div class="modal fade" id="staticDeleteDepartment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Delete Department</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <i class="bi bi-shield-fill-exclamation text-danger"></i>
+                    Confirm you are about to delete the department with all it's employees!!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="window.location.href='/departments/{{department.id}}/delete';">Delete</button>
+                    <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
     </div>
 {{/partial}}
 

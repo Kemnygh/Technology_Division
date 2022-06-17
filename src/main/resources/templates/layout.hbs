@@ -42,7 +42,7 @@
                                         {{/each}}
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="/positions/new">+ New Position</a></li>
-                                        <li><a class="dropdown-item text-danger" href="/delete/positions/all">Delete All Positions</a></li>
+                                        <li><a class="dropdown-item text-danger" href="" <a class="" href="" data-bs-toggle="modal" data-bs-target="#staticDeleteAllPositions">Delete All Positions</a></li>
                                     {{else}}
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="/positions/new">+ New position</a></li>
@@ -60,7 +60,7 @@
                                         {{/each}}
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="/departments/new">+ New Department</a></li>
-                                        <li><a class="dropdown-item text-danger" href="/delete/departments/all">Delete All Departments</a></li>
+                                        <li><a class="dropdown-item text-danger"  href="" data-bs-toggle="modal" data-bs-target="#staticDeleteAllDepartments">Delete All Departments</a></li>
                                     {{else}}
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="/departments/new">+ New Department</a></li>
@@ -91,27 +91,76 @@
                         <button type="button" class="btn btn-success" onclick="window.location.href='/positions/new';">+ New Position <i class="bi bi-file-person"></i></button>
                         <button type="button" class="btn btn-success" onclick="window.location.href='/departments/new';">+ New Department <i class="bi bi-collection-fill"></i></button>
                     </div>
-                    <hr>
-                    {{#if departments}}
-                    <p style="color: grey;">Current Departments:  <a class="" href="/delete/departments/all">Delete All Departments</a></p>
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        {{# each departments}}
-                        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/departments/{{id}}';">{{name}}</button>
-                        {{/each}}
-                    </div>
-                    {{/if}}
-                    <hr>
+                    {{#block "components"}}{{/block}}
                 </div>
             </div>
             {{#block "content"}}
             {{/block}}
+            <!-- Deleting modal --------------------------------------->
+            <!-- Delete all Departments -->
+            <div class="modal fade" id="staticDeleteAllDepartments" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Delete All Departments</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <i class="bi bi-shield-fill-exclamation text-danger"></i>
+                            Confirm you are about to delete all departments!!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-sm" onclick="window.location.href='/delete/departments/all';">Delete</button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Delete all Positions -->
+            <div class="modal fade" id="staticDeleteAllPositions" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Delete All Positions</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <i class="bi bi-shield-fill-exclamation text-danger"></i>
+                            Confirm you are about to delete all Positions!!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-sm" onclick="window.location.href='/delete/positions/all';">Delete</button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Delete all items -->
+            <div class="modal fade" id="staticDeleteAll" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Delete All Items</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <i class="bi bi-shield-fill-exclamation text-danger"></i>
+                            Confirm you are about to delete all Employees, Positions & Departments!!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-sm" onclick="window.location.href='/delete/all';">Delete</button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--begin footer-->
 {{#block "footer"}}
         <div class="footer">
             <div class="footer-con container">
                 <nav class="nav-footer text-white">
-                    <li class="text-danger" id="copyRight"><a class="text-danger" style="font-weight: bold;" href="/delete/all">**Delete All Items</a></li>
+                    <li class="" id="copyRight">Delete All Items  <a class="text-danger" style="font-weight: bold;" href="" data-bs-toggle="modal" data-bs-target="#staticDeleteAll"><i class="bi bi-trash-fill"></i></a></li>
                     <li class="text-white ms-auto" id="copyRight">@Copyright 2022 Technology Division</li>
                 </nav>
             </div>
